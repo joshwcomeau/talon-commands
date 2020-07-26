@@ -1,5 +1,4 @@
-tag: terminal
--
+
 # Standard commands
 git add patch: "git add . -p\n"
 git add: "git add "
