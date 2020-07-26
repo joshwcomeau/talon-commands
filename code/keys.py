@@ -2,7 +2,7 @@ from typing import Set
 
 from talon import Module, Context, actions
 import sys
-    
+
 default_alphabet = 'air bat cap drum each fine gust harp sit jury crunch look made near odd pit quench red sun trap urge vest whale plex yank zip'.split(' ')
 letters_string = 'abcdefghijklmnopqrstuvwxyz'
 
@@ -34,14 +34,14 @@ def arrows(m) -> str:
 @mod.capture
 def number(m) -> str:
     "One number key"
- 
+
 @mod.capture
 def letter(m) -> str:
-    "One letter key" 
+    "One letter key"
 
 @mod.capture
 def letters(m) -> list:
-    "Multiple letter keys" 
+    "Multiple letter keys"
 
 @mod.capture
 def symbol(m) -> str:
@@ -76,6 +76,7 @@ ctx.lists['self.letter'] = dict(zip(default_alphabet, letters_string))
 ctx.lists['self.symbol'] = {
     'back tick': '`', '`':'`',
     'comma': ',', ',': ',',
+    'sweat': '😅',
     'dot': '.', 'period': '.',
     'semi': ';', 'semicolon': ';',
     'quote': "'",
@@ -88,7 +89,7 @@ ctx.lists['self.symbol'] = {
     'plus': '+',
     'question mark': '?',
     'tilde': '~',
-    'bang': '!', 'exclamation point': '!', 
+    'bang': '!', 'exclamation point': '!',
     'dollar': '$', 'dollar sign': '$',
     'down score': '_', 'under score': '_',
     'colon': ':',
@@ -123,7 +124,7 @@ simple_keys = [
 ]
 
 alternate_keys = {
-    'delete': 'backspace', 
+    'delete': 'backspace',
     #'junk': 'backspace',
     'forward delete': 'delete',
 }
@@ -141,7 +142,7 @@ def arrow(m) -> str:
     return m.arrow
 
 @ctx.capture(rule='<self.arrow>+')
-def arrows(m) -> str: 
+def arrows(m) -> str:
     return str(m)
 
 @ctx.capture(rule='{self.number}')
@@ -165,7 +166,7 @@ def function(m):
     return m.function
 
 @ctx.capture(rule='(<self.arrow> | <self.number> | <self.letter> | <self.symbol> | <self.function> | <self.special>)')
-def any(m) -> str: 
+def any(m) -> str:
     return str(m)
 
 @ctx.capture(rule='<self.modifiers> <self.any>')
