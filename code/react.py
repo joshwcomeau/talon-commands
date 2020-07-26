@@ -19,11 +19,32 @@ ctx = Context()
 def create_element(m) -> str:
     "Formats the text and returns a string"
 
+@mod.capture
+def default_import(m) -> str:
+    "Import a default export"
+
+@mod.capture(rule='(<user.vocabulary> | <phrase>)+')
+def var(m) -> str:
+    return m
+
+@mod.capture(rule='(<user.vocabulary> | <phrase>)+')
+def package(m) -> str:
+    return m
+
+
 @ctx.capture(rule='elm <user.text>')
 def create_element(m):
     print('debug fos')
     print(m.text)
-    m.text
+    return '<' + m.text
+
+@ctx.capture(rule='import <user.var> from <user.package>')
+def default_import(m):
+    print('import test')
+    print(m.var)
+    print(m.package)
+    # print(m.package)
+    return f'import {m.var} from \'{m.package}\';'
 
 
 # @ctx.action_class('react')
