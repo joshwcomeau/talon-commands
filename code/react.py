@@ -20,6 +20,11 @@ def create_element(m) -> str:
     "Formats the text and returns a string"
 
 @mod.capture
+def create_image(m) -> str:
+    "Formats the text and returns a string"
+
+
+@mod.capture
 def default_import(m) -> str:
     "Import a default export"
 
@@ -32,10 +37,12 @@ def package(m) -> str:
     return m
 
 
+@ctx.capture(rule='elm image')
+def create_image(m):
+    return '<img alt="" src="" />'
+
 @ctx.capture(rule='elm <user.text>')
 def create_element(m):
-    print('debug fos')
-    print(m.text)
     return '<' + m.text
 
 @ctx.capture(rule='import <user.var> from <user.package>')

@@ -74,17 +74,18 @@ ctx.lists['self.modifier'] = {
 
 ctx.lists['self.letter'] = dict(zip(default_alphabet, letters_string))
 ctx.lists['self.symbol'] = {
-    'back tick': '`', '`':'`',
+    'tick': '`', '`':'`',
     'comma': ',', ',': ',',
-    'sweat': '😅',
     'dot': '.', 'period': '.',
     'semi': ';', 'semicolon': ';',
     'quote': "'",
+    'dubquote': '"', 'double quote': '"',
     'L square': '[', 'left square': '[', 'square': '[',
     'R square': ']', 'right square': ']',
     'forward slash': '/', 'slash': '/',
     'backslash': '\\',
-    'minus': '-', 'dash': '-',
+    'dash': '-',
+    'em dash': '—',
     'equals': '=',
     'plus': '+',
     'question mark': '?',
@@ -95,8 +96,8 @@ ctx.lists['self.symbol'] = {
     'colon': ':',
     'paren': '(', 'L paren': '(', 'left paren': '(',
     'R paren': ')', 'right paren': ')',
-    'brace': '{', 'left brace': '{',
-    'R brace': '}', 'right brace': '}',
+    'brace': '{', 'left brace': '{', 'squiggly': '{',
+    'R brace': '}', 'right brace': '}', 'right squiggly': '{',
     'angle': '<', 'left angle': '<', 'less than': '<',
     'rangle': '>', 'R angle': '>', 'right angle': '>', 'greater than': '>',
     'star': '*', 'asterisk': '*',
@@ -106,7 +107,6 @@ ctx.lists['self.symbol'] = {
     'at sign': '@',
     'and sign': '&', 'ampersand': '&', 'amper': '&',
     'pipe': '|',
-    'dubquote': '"', 'double quote': '"',
 }
 
 ctx.lists['self.number'] = dict(zip(default_digits, numbers))
@@ -124,9 +124,9 @@ simple_keys = [
 ]
 
 alternate_keys = {
-    'delete': 'backspace',
-    #'junk': 'backspace',
-    'forward delete': 'delete',
+    'delete': 'delete',
+    'dell': 'delete',
+    'junk': 'backspace',
 }
 keys = {k: k for k in simple_keys}
 keys.update(alternate_keys)

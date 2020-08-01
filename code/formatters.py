@@ -39,11 +39,14 @@ def format_text_helper(word_list, fmtrs: str):
     fmtr_list = fmtrs.split(",")
     tmp = []
     spaces = True
+    dictate_niceties = False
     for i, w in enumerate(word_list):
         for name in reversed(fmtr_list):
             smash, func = all_formatters[name]
             w = func(i, w, i == len(word_list) - 1)
             spaces = spaces and not smash
+            if not smash:
+              dictate_niceties = True
         tmp.append(w)
     words = tmp
 
@@ -51,6 +54,9 @@ def format_text_helper(word_list, fmtrs: str):
     if not spaces:
         sep = ""
     result = sep.join(words)
+    print(dictate_niceties)
+    if dictate_niceties:
+      result = result.replace(' comma', ',')
 
     global last_formatted_phrase
     last_formatted_phrase = result
