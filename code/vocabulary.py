@@ -8,6 +8,12 @@ simple_vocabulary = [
     "VPN",
     "DNS",
     "minecraft",
+    "hey",
+    "HTML",
+    "div",
+    "dev",
+    "null",
+    "Wrapper"
 ]
 
 mapping_vocabulary = {
@@ -16,6 +22,7 @@ mapping_vocabulary = {
     "i've": "I've",
     "i'll": "I'll",
     "i'd": "I'd",
+    "source": "src"
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))

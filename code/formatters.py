@@ -56,7 +56,7 @@ def format_text_helper(word_list, fmtrs: str):
     result = sep.join(words)
     print(dictate_niceties)
     if dictate_niceties:
-      result = result.replace(' comma', ',')
+      result = result.replace(' comma', ',').replace(' comer', ',')
 
     global last_formatted_phrase
     last_formatted_phrase = result

@@ -17,8 +17,13 @@
   insert(create_image)
   key('left left left left left left left left left left left')
 
+<user.create_styled_component> [over]:
+  insert(create_styled_component)
+  key('left enter enter up tab')
+
+<user.css_attribute> [over]: insert(css_attribute)
+
 react: insert("import React from 'react';")
-styled: insert("import styled from 'styled-components';")
 
 <user.default_import>: insert(default_import)
 
