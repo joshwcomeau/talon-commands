@@ -13,6 +13,11 @@
 # boo: "ysa"
 
 <user.create_element> [over]: insert(create_element)
+<user.create_closed_element> [over]:
+  insert(create_closed_element)
+  key('left left left')
+
+<user.create_native_element> [over]: insert(create_native_element)
 <user.create_image> [over]:
   insert(create_image)
   key('left left left left left left left left left left left')
@@ -21,20 +26,41 @@
   insert(create_styled_component)
   key('left enter enter up tab')
 
-<user.css_attribute> [over]: insert(css_attribute)
+<user.create_function_component> [over]:
+  insert(create_function_component)
+  key('left enter')
+
+fragment:
+  insert("<></>")
+  key('left left left enter')
 
 react: insert("import React from 'react';")
 
 <user.default_import>: insert(default_import)
+<user.component_import>: insert(component_import)
+<user.text_attribute>:
+  insert(text_attribute)
+  key('left')
+<user.squiggly_attribute>:
+  insert(squiggly_attribute)
+  key('left')
 
-up: insert('../')
 const: insert('const ')
 letuce: insert('let ')
+
+<user.state_hook>:
+  insert(state_hook)
+  key('left left')
+effect hook:
+  insert('React.useEffect(() => {}, []);')
+  key('left left left left left left left enter')
+ref hook:
+  insert('React.useRef(null);')
+
 
 
 # todo: Move these to their own Talon file
 save: key('cmd-s')
-back: key('')
 console:
   insert('console.log();')
   key('left left')
