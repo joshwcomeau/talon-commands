@@ -44,6 +44,22 @@ def default_import(m) -> str:
 def component_import(m) -> str:
     "Import a react component"
 
+@mod.capture
+def text_attribute(m) -> str:
+    "Add jsx attribute with double quotes"
+
+@mod.capture
+def squiggly_attribute(m) -> str:
+    "Add jsx attribute with squiggly brackets"
+
+@mod.capture
+def state_hook(m) -> str:
+    "Create a react state hook"
+@mod.capture
+def rough_hook(m) -> str:
+    "Create a react ref hook"
+
+
 @mod.capture(rule='(<user.vocabulary> | <phrase> | <user.text>)+')
 def var(m) -> str:
     return m
@@ -52,13 +68,6 @@ def var(m) -> str:
 def package(m) -> str:
     return m
 
-@mod.capture
-def text_attribute(m) -> str:
-    "Add jsx attribute with double quotes"
-
-@mod.capture
-def squiggly_attribute(m) -> str:
-    "Add jsx attribute with squiggly brackets"
 
 
 # Context Stuff
@@ -106,6 +115,17 @@ def text_attribute(m):
 def squiggly_attribute(m):
     attribute_name = actions.user.formatted_text(m.text, 'PRIVATE_CAMEL_CASE')
     return f'{attribute_name}={{}}'
+
+@ctx.capture(rule='state hook <user.text>')
+def state_hook(m):
+    state_name = actions.user.formatted_text(m.text, 'PRIVATE_CAMEL_CASE')
+    setter_name = 'set' + actions.user.formatted_text(m.text, 'PUBLIC_CAMEL_CASE')
+    return f'const [{state_name}, {setter_name}] = React.useState();'
+
+@ctx.capture(rule='rough hook <user.text>')
+def rough_hook(m):
+    state_name = actions.user.formatted_text(m.text, 'PRIVATE_CAMEL_CASE')
+    return f'const {state_name}Ref = React.useRef();'
 
 
 mod.list('html_elements', desc='list of all HTML elements')

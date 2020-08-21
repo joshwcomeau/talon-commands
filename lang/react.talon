@@ -51,11 +51,11 @@ letuce: insert('let ')
 <user.state_hook>:
   insert(state_hook)
   key('left left')
+<user.rough_hook>:
+  insert(rough_hook)
 effect hook:
   insert('React.useEffect(() => {}, []);')
   key('left left left left left left left enter')
-ref hook:
-  insert('React.useRef(null);')
 
 
 
