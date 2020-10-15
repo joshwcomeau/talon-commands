@@ -1,5 +1,5 @@
 mode: user.javascript
-mode: command 
+mode: command
 and code.language: javascript
 -
 tag(): user.code_operators
@@ -23,8 +23,8 @@ action(user.code_type_dictionary):
   key(left)
 
 action(user.code_state_if):
-  insert("if ()")
-  key(left)
+  insert("if () {}")
+  key(left enter up right right)
 
 action(user.code_state_else_if):
   insert(" else if ()")
@@ -32,7 +32,7 @@ action(user.code_state_else_if):
 
 action(user.code_state_else):
   insert(" else {}")
-  key(left enter) 
+  key(left enter)
 
 action(user.code_self): "this"
 
@@ -87,7 +87,7 @@ action(user.code_operator_indirection): ""
 action(user.code_operator_address_of): ""
 action(user.code_operator_structure_deference): ""
 action(user.code_operator_lambda): " => "
-action(user.code_operator_subscript): 
+action(user.code_operator_subscript):
   insert("[]")
   key(left)
 action(user.code_operator_assignment): " = "
@@ -113,7 +113,7 @@ action(user.code_operator_less_than_or_equal_to): " <= "
 action(user.code_operator_and): " && "
 action(user.code_operator_or): " || "
 action(user.code_operator_bitwise_and): " & "
-action(user.code_operator_bitwise_and_assignment): " &= " 
+action(user.code_operator_bitwise_and_assignment): " &= "
 action(user.code_operator_bitwise_or): " | "
 action(user.code_operator_bitwise_or_assignment): " |= "
 action(user.code_operator_bitwise_exlcusive_or): " ^ "
@@ -136,11 +136,19 @@ state var: "var "
 state async: "async "
 
 state await: "await "
-  
+
+state lambda:
+  insert("() => {}")
+  key(left left left left left left left)
+
+state empty lambda:
+  insert("() => {}")
+  key(left enter)
+
 state map:
   insert(".map()")
   key(left)
-  
+
 state filter:
   insert(".filter()")
   key(left)

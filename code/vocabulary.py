@@ -20,7 +20,15 @@ simple_vocabulary = [
     "font",
     "css",
     "y'all",
-    "null"
+    "null",
+    "vercel",
+    "netlify",
+    "todo",
+    "async",
+    "res",
+    "req",
+    "unstyled",
+    "auth"
 ]
 
 mapping_vocabulary = {
@@ -42,6 +50,7 @@ mapping_vocabulary = {
     "fon": "font",
     "zed index": "z-index",
     "cs": "css",
+    "noll": "null",
 }
 
 mapping_vocabulary.update(dict(zip(simple_vocabulary, simple_vocabulary)))

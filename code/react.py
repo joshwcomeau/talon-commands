@@ -31,6 +31,9 @@ def create_image(m) -> str:
 @mod.capture
 def create_styled_component(m) -> str:
     "Creates a new styled component"
+@mod.capture
+def create_styled_wrapper(m) -> str:
+    "Creates a new styled Wrapper"
 
 @mod.capture
 def create_function_component(m) -> str:
@@ -43,6 +46,10 @@ def default_import(m) -> str:
 @mod.capture
 def component_import(m) -> str:
     "Import a react component"
+
+@mod.capture
+def hook_import(m) -> str:
+    "Import a react hook"
 
 @mod.capture
 def text_attribute(m) -> str:
@@ -92,6 +99,11 @@ def create_styled_component(m):
     component_name = actions.user.formatted_text(m.text, 'PUBLIC_CAMEL_CASE')
     return f'const {component_name} = styled.{m.html_elements}``'
 
+@ctx.capture(rule='styled wrapper <user.text>')
+def create_styled_component(m):
+    component_name = actions.user.formatted_text(m.text, 'PUBLIC_CAMEL_CASE')
+    return f'const {component_name} = styled()``'
+
 @ctx.capture(rule='function component <user.text>')
 def create_function_component(m):
     component_name = actions.user.formatted_text(m.text, 'PUBLIC_CAMEL_CASE')
@@ -105,6 +117,12 @@ def default_import(m):
 def component_import(m):
     component_name = actions.user.formatted_text(m.text, 'PUBLIC_CAMEL_CASE')
     return f'import {component_name} from \'@components/{component_name}\';'
+
+@ctx.capture(rule='import hook <user.text>')
+def component_import(m):
+    hook_name = actions.user.formatted_text(m.text, 'PRIVATE_CAMEL_CASE')
+    filename =  actions.user.formatted_text(m.text, 'DASH_SEPARATED') + '.hook'
+    return f'import {hook_name} from \'@hooks/{filename}\';'
 
 @ctx.capture(rule='text attribute <user.text>')
 def text_attribute(m):
@@ -167,4 +185,11 @@ ctx.lists['user.html_elements'] = {
   'strong': 'strong',
   'am': 'em',
   'emphasis': 'em',
+  'title': 'title',
+  'table': 'table',
+  'table body': 'tbody',
+  'table head': 'thead',
+'table row': 'tr',
+'table heading': 'th',
+'table cell': 'td'
 }

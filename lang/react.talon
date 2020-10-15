@@ -25,6 +25,9 @@
 <user.create_styled_component> [over]:
   insert(create_styled_component)
   key('left enter enter up tab')
+<user.create_styled_wrapper> [over]:
+  insert(create_styled_wrapper)
+  key('left enter enter up up end left left')
 
 <user.create_function_component> [over]:
   insert(create_function_component)
@@ -38,15 +41,14 @@ react: insert("import React from 'react';")
 
 <user.default_import>: insert(default_import)
 <user.component_import>: insert(component_import)
+<user.hook_import>: insert(hook_import)
+
 <user.text_attribute>:
   insert(text_attribute)
   key('left')
 <user.squiggly_attribute>:
   insert(squiggly_attribute)
   key('left')
-
-const: insert('const ')
-letuce: insert('let ')
 
 <user.state_hook>:
   insert(state_hook)
@@ -60,7 +62,12 @@ effect hook:
 
 
 # todo: Move these to their own Talon file
+const: insert('const ')
+letuce: insert('let ')
+note environment: insert('process.env.NODE_ENV')
 save: key('cmd-s')
 console:
   insert('console.log();')
   key('left left')
+new dep:
+  insert('yarn add ')
